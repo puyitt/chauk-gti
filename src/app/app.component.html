@@ -1,7 +1,7 @@
 <div class="main">
   <div class="overlay"></div>
   <div id="envelope" class="close" (click)="open()">
-    <svg width="70" height="70" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg" class="hand hand1">
+    <svg width="70" height="70" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg" class="hand hand1" (click)="playSound()">
       <g class="touchon">
         <g id="touchon-body">
           <circle class="hand-touch-1" cx="299" cy="201" r="50" stroke-width="14" />
@@ -17,7 +17,7 @@
       </g>
     </svg>
 
-    <img src="../assets/badge.png" class="wax" alt="">
+    <img src="../assets/badge.png" class="wax" alt="" (click)="playSound()">
     <div class="front flap" (click)="playSound()"></div>
     <div class="front pocket" (click)="playSound()"></div>
     <div class="letter">

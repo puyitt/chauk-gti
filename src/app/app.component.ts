@@ -15,7 +15,7 @@ export class AppComponent{
 
   open() {
     const element = document.getElementById('envelope');
-
+    
     if (element) {
       element.classList.add('open');
       element.classList.remove('close');
