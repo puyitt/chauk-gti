@@ -93,6 +93,15 @@ img {
     z-index: 1;
 }
 
+.open {
+  .hand1,
+  .wax,
+  .pocket,
+  .flap
+   {
+    pointer-events: none;
+  }
+}
 .close .flap {
     transform: rotateX(0deg);
     transition: transform .4s .6s ease, z-index 1s;
@@ -118,7 +127,8 @@ img {
         transform: translate(-50%,-50%) scale(1);
         transition: transform .3s .5s ease, z-index .5s;
         z-index: 4;
-
+        pointer-events: all;
+        
         .hand2,.hand3 {
           opacity: 1;
           transition: opacity 2s;
@@ -155,6 +165,7 @@ img {
     margin-right: auto;
     border-radius: 6px;
     perspective: 1200px;
+    pointer-events: none;
 }
 
 
