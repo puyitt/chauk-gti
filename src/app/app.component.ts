@@ -7,10 +7,37 @@ import { AfterViewInit, Component, ViewChildren, QueryList, ElementRef, OnInit }
 })
 export class AppComponent{
   title = 'invitation';
+  images: string[] = [
+    'assets/img1_11.jpg',
+    'assets/img1_1.jpg',
+    'assets/img1_2.jpg',
+    'assets/img1_3.jpg',
+    'assets/img1_4.jpg',
+    'assets/img1_5.jpg',
+    'assets/img1_6.jpg',
+    'assets/img1_7.jpg',
+    'assets/img1_8.jpg',
+    'assets/img1_9.jpg',
+    'assets/img1_12.jpg',
+    'assets/img1_13.jpg',
+    'assets/img1_14.jpg',
+    'assets/img1_15.jpg',
+    'assets/img1_16.jpg',
+    'assets/img1_17.jpg',
+    'assets/img1_18.jpg',
+    'assets/img1_10.jpg',
+  ];
+
+  imageDisplayDuration = 80 / this.images.length;
   // @ViewChildren('page') pages!: QueryList<ElementRef>;
 
 
-  ngOnInit(): void {
+   ngOnInit() {
+    // Optional preload for smoother transition
+    this.images.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
   }
 
   open() {
