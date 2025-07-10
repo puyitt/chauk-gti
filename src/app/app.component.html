@@ -1,4 +1,14 @@
-<div class="main"  [ngStyle]="{ 'background-image': 'url(' + currentImage + ')' }">
+<div class="main">
+   <div
+    class="bg bg1"
+    [ngStyle]="{ 'background-image': 'url(' + currentImage + ')' }"
+    [class.visible]="activeBg === 1"
+  ></div>
+  <div
+    class="bg bg2"
+    [ngStyle]="{ 'background-image': 'url(' + nextImage + ')' }"
+    [class.visible]="activeBg === 2"
+  ></div>
   <div class="overlay"></div>
   <div id="envelope" class="close" (click)="open()">
     <svg width="70" height="70" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg" class="hand hand1" (click)="playSound()">

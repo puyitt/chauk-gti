@@ -32,8 +32,9 @@ export class AppComponent implements OnInit, OnDestroy{
 
   currentIndex = 0;
   currentImage = this.images[0];
+  nextImage = this.images[1];
+  activeBg = 1; // which layer is visible
   intervalId: any;
-
 
   ngOnInit(): void {
     // preload images
@@ -42,11 +43,18 @@ export class AppComponent implements OnInit, OnDestroy{
       img.src = src;
     });
 
-    // start slideshow
     this.intervalId = setInterval(() => {
       this.currentIndex = (this.currentIndex + 1) % this.images.length;
-      this.currentImage = this.images[this.currentIndex];
-    },3000); // change every 4 seconds
+      const nextIdx = (this.currentIndex + 1) % this.images.length;
+
+      if (this.activeBg === 1) {
+        this.nextImage = this.images[this.currentIndex];
+        this.activeBg = 2;
+      } else {
+        this.currentImage = this.images[this.currentIndex];
+        this.activeBg = 1;
+      }
+    }, 3000);
   }
 
   ngOnDestroy(): void {
