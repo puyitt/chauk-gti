@@ -54,7 +54,7 @@ export class AppComponent implements OnInit, OnDestroy{
         this.currentImage = this.images[this.currentIndex];
         this.activeBg = 1;
       }
-    }, 3000);
+    }, 4000);
   }
 
   ngOnDestroy(): void {
