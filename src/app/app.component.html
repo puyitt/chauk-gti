@@ -1,12 +1,4 @@
-<div class="main">
-  <div
-    class="slide"
-    *ngFor="let image of images; let i = index"
-    [ngStyle]="{
-      'background-image': 'url(' + image + ')',
-      'animation-delay': (i * imageDisplayDuration) + 's'
-    }"
-  ></div>
+<div class="main"  [ngStyle]="{ 'background-image': 'url(' + currentImage + ')' }">
   <div class="overlay"></div>
   <div id="envelope" class="close" (click)="open()">
     <svg width="70" height="70" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg" class="hand hand1" (click)="playSound()">

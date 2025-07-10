@@ -1,14 +1,14 @@
-import { AfterViewInit, Component, ViewChildren, QueryList, ElementRef, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ViewChildren, QueryList, ElementRef, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent{
+export class AppComponent implements OnInit, OnDestroy{
+
   title = 'invitation';
   images: string[] = [
-    'assets/img1_11.jpg',
     'assets/img1_1.jpg',
     'assets/img1_2.jpg',
     'assets/img1_3.jpg',
@@ -18,6 +18,8 @@ export class AppComponent{
     'assets/img1_7.jpg',
     'assets/img1_8.jpg',
     'assets/img1_9.jpg',
+    'assets/img1_10.jpg',
+    'assets/img1_11.jpg',
     'assets/img1_12.jpg',
     'assets/img1_13.jpg',
     'assets/img1_14.jpg',
@@ -25,19 +27,30 @@ export class AppComponent{
     'assets/img1_16.jpg',
     'assets/img1_17.jpg',
     'assets/img1_18.jpg',
-    'assets/img1_10.jpg',
   ];
 
-  imageDisplayDuration = 80 / this.images.length;
-  // @ViewChildren('page') pages!: QueryList<ElementRef>;
+
+  currentIndex = 0;
+  currentImage = this.images[0];
+  intervalId: any;
 
 
-   ngOnInit() {
-    // Optional preload for smoother transition
+  ngOnInit(): void {
+    // preload images
     this.images.forEach((src) => {
       const img = new Image();
       img.src = src;
     });
+
+    // start slideshow
+    this.intervalId = setInterval(() => {
+      this.currentIndex = (this.currentIndex + 1) % this.images.length;
+      this.currentImage = this.images[this.currentIndex];
+    },3000); // change every 4 seconds
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.intervalId);
   }
 
   open() {
